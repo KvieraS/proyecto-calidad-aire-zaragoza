@@ -1,0 +1,19 @@
+
+Conclusiones del análisis
+
+El análisis de la calidad del aire en Zaragoza entre 2020 y 2023 ha permitido estudiar
+el comportamiento de varios contaminantes atmosféricos y su relación con variables meteorológicas.
+
+Entre los principales hallazgos, destaca que el contaminante con mayor concentración media
+ha sido O3, con una media aproximada de 50.94 µg/m3.
+
+A nivel espacial, la estación con mayor concentración media global ha sido Estación 40,
+con una media aproximada de 23.08 considerando el conjunto de contaminantes analizados.
+
+El estudio también ha permitido identificar patrones temporales, diferencias entre estaciones
+y relaciones entre contaminación y meteorología. Estas relaciones deben interpretarse como asociaciones
+estadísticas y no como relaciones causales directas.
+
+En conjunto, el proyecto permite construir un dashboard operativo útil para analizar la evolución
+de la calidad del aire en Zaragoza, comparar estaciones, estudiar contaminantes concretos
+y apoyar la interpretación de los datos mediante variables meteorológicas.

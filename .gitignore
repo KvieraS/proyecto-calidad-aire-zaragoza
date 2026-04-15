@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Variables de entorno
+.env
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Entorno virtual
+.venv/
+
+# CSV raw pesados
+data/raw/aire_miteco/aire_2020.csv
+data/raw/aire_miteco/aire_2021.csv
+data/raw/aire_miteco/aire_2022.csv
+data/raw/aire_miteco/aire_2023.csv
+
+# CSV procesados pesados
+data/processed/aire_total_unido.csv
+data/processed/aire_zaragoza_ancho.csv
+data/processed/aire_zaragoza_long.csv
+data/processed/dataset_final_aire_meteo_zaragoza.csv
+data/processed/dataset_final_aire_meteo_zaragoza_limpio.csv
+
+# Configuración local
+.env
