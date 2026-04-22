@@ -22,43 +22,26 @@ Los objetivos principales del proyecto han sido:
 - Presentar conclusiones relevantes a partir de los datos analizados.
 
 ---
-
 ## Fuentes de datos
 
-Para este proyecto se han utilizado dos grandes bloques de información:
+El proyecto se apoya en dos fuentes oficiales principales: los datos de calidad del aire y los datos meteorológicos.
 
 ### 1. Datos de calidad del aire
-Datos horarios de contaminación atmosférica correspondientes a Zaragoza para los años:
-
-- 2020
-- 2021
-- 2022
-- 2023
-
-Contaminantes trabajados:
-
-- CO
-- NO
-- NO2
-- O3
-- PM10
-- PM2.5
-- SO2
+- **Organismo:** Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO).
+- **Descripción:** datos oficiales de calidad del aire utilizados para construir el dataset principal del proyecto, con información horaria de contaminantes atmosféricos.
+- **Periodo utilizado en el proyecto:** 2020, 2021, 2022 y 2023.
+- **Formato de trabajo en el proyecto:** archivos CSV descargados y posteriormente unificados y transformados en Python.
+- **Fuente oficial:** página de evaluación y datos de calidad del aire del MITECO. :contentReference[oaicite:0]{index=0}
 
 ### 2. Datos meteorológicos
-Datos diarios descargados de AEMET para Zaragoza, integrados posteriormente con los datos de contaminación.
+- **Organismo:** Agencia Estatal de Meteorología (AEMET).
+- **Descripción:** datos meteorológicos diarios utilizados para complementar el análisis de contaminación y estudiar su relación con variables como temperatura, precipitación, viento, insolación o presión.
+- **Formato de trabajo en el proyecto:** descarga automatizada mediante la API oficial de AEMET OpenData.
+- **Fuente oficial de la API:** AEMET OpenData. :contentReference[oaicite:1]{index=1}
 
-Variables meteorológicas principales utilizadas:
+### Nota sobre la obtención de datos
+Aunque parte de la información se descarga automáticamente mediante scripts o mediante llamadas a API, se documentan igualmente las fuentes oficiales para dejar constancia del origen de los datos y facilitar la trazabilidad del proyecto. :contentReference[oaicite:2]{index=2}
 
-- temperatura media
-- temperatura mínima
-- temperatura máxima
-- precipitación
-- velocidad media del viento
-- racha máxima
-- insolación
-- presión máxima
-- presión mínima
 
 ---
 
