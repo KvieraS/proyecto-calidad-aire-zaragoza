@@ -22,11 +22,13 @@ Los objetivos principales del proyecto han sido:
 - Presentar conclusiones relevantes a partir de los datos analizados.
 
 ---
+
 ## Fuentes de datos
 
 El proyecto se apoya en dos fuentes oficiales principales: los datos de calidad del aire y los datos meteorológicos.
 
 ### 1. Datos de calidad del aire
+
 - **Organismo:** Ministerio para la Transición Ecológica y el Reto Demográfico (MITECO).
 - **Descripción:** datos oficiales de calidad del aire utilizados para construir el dataset principal del proyecto, con información horaria de contaminantes atmosféricos.
 - **Periodo utilizado en el proyecto:** 2020, 2021, 2022 y 2023.
@@ -34,23 +36,25 @@ El proyecto se apoya en dos fuentes oficiales principales: los datos de calidad 
 - **Fuente oficial:** página de evaluación y datos de calidad del aire del MITECO.
 
 ### 2. Datos meteorológicos
+
 - **Organismo:** Agencia Estatal de Meteorología (AEMET).
 - **Descripción:** datos meteorológicos diarios utilizados para complementar el análisis de contaminación y estudiar su relación con variables como temperatura, precipitación, viento, insolación o presión.
 - **Formato de trabajo en el proyecto:** descarga automatizada mediante la API oficial de AEMET OpenData.
 - **Fuente oficial de la API:** AEMET OpenData.
 
 ### Nota sobre la obtención de datos
-Aunque parte de la información se descarga automáticamente mediante scripts o mediante llamadas a API, se documentan igualmente las fuentes oficiales para dejar constancia del origen de los datos y facilitar la trazabilidad del proyecto.
 
+Aunque parte de la información se descarga automáticamente mediante scripts o mediante llamadas a API, se documentan igualmente las fuentes oficiales para dejar constancia del origen de los datos y facilitar la trazabilidad del proyecto.
 
 ---
 
 ## Herramientas utilizadas
 
 ### Python
+
 Utilizado para la extracción, limpieza, transformación, análisis exploratorio y preparación del dataset final.
 
-Librerías principales:
+**Librerías principales:**
 
 - `pandas`
 - `numpy`
@@ -60,9 +64,11 @@ Librerías principales:
 - `pathlib`
 
 ### Power BI
+
 Utilizado para el modelado final y la creación del dashboard interactivo.
 
 ### Otras herramientas
+
 - Visual Studio Code
 - Jupyter Notebook
 - Git
@@ -117,225 +123,257 @@ proyecto-final-calidad-aire-zaragoza/
 ├── README.md
 └── requirements.txt
 ```
-Proceso de trabajo en Python
-1. Extracción y carga de datos
+
+---
+
+## Proceso de trabajo en Python
+
+### 1. Extracción y carga de datos
 
 En una primera fase se cargaron los archivos anuales de calidad del aire, comprobando:
 
-número de archivos encontrados
-separador correcto
-codificación
-dimensiones de cada fichero
+- número de archivos encontrados
+- separador correcto
+- codificación
+- dimensiones de cada fichero
 
 Posteriormente se unificaron en un único dataset bruto.
 
 También se descargaron los datos meteorológicos de AEMET y se almacenaron en un fichero independiente para su posterior integración.
 
-2. Limpieza y transformación de datos
+### 2. Limpieza y transformación de datos
 
 Durante la fase de transformación y limpieza se realizaron, entre otras, las siguientes tareas:
 
-filtrado de registros correspondientes a la provincia de Zaragoza
-selección de contaminantes relevantes
-transformación de formato ancho a formato largo
-creación de una columna única de valor
-construcción de columnas temporales:
-fecha
-datetime
-año
-mes
-día
-estación del año
-tipado correcto de columnas numéricas y temporales
-tratamiento de nulos
-revisión de duplicados
-homogeneización del nombre de contaminantes
-integración de datos meteorológicos diarios con el dataset de contaminación
+- filtrado de registros correspondientes a la provincia de Zaragoza
+- selección de contaminantes relevantes
+- transformación de formato ancho a formato largo
+- creación de una columna única de valor
+- construcción de columnas temporales:
+  - fecha
+  - datetime
+  - año
+  - mes
+  - día
+  - estación del año
+- tipado correcto de columnas numéricas y temporales
+- tratamiento de nulos
+- revisión de duplicados
+- homogeneización del nombre de contaminantes
+- integración de datos meteorológicos diarios con el dataset de contaminación
 
 También se tuvo en cuenta la existencia de distintas unidades de medida según el contaminante:
 
-CO en mg/m3
-resto de contaminantes en µg/m3
+- CO en mg/m3
+- resto de contaminantes en µg/m3
 
 Esto fue especialmente importante para evitar comparaciones incorrectas.
 
-3. Análisis exploratorio de datos
+### 3. Análisis exploratorio de datos
 
 Con el dataset ya limpio y estructurado se realizó un análisis exploratorio que incluyó:
 
-revisión del rango temporal
-análisis de nulos
-identificación de contaminantes y estaciones presentes
-estadísticos descriptivos:
-media
-mediana
-mínimo
-máximo
-desviación estándar
-evolución temporal de los contaminantes
-comparativa entre estaciones
-análisis mensual
-relación entre contaminación y variables meteorológicas
-generación de tablas resumen para apoyo al dashboard
-4. Exportación de datasets procesados
+- revisión del rango temporal
+- análisis de nulos
+- identificación de contaminantes y estaciones presentes
+- estadísticos descriptivos:
+  - media
+  - mediana
+  - mínimo
+  - máximo
+  - desviación estándar
+- evolución temporal de los contaminantes
+- comparativa entre estaciones
+- análisis mensual
+- relación entre contaminación y variables meteorológicas
+- generación de tablas resumen para apoyo al dashboard
+
+### 4. Exportación de datasets procesados
 
 Finalmente se exportaron distintos archivos procesados para:
 
-facilitar el análisis intermedio
-reutilizar resultados
-alimentar el dashboard de Power BI
-disponer de tablas resumen limpias para comparativas
-Trabajo realizado en Power BI
+- facilitar el análisis intermedio
+- reutilizar resultados
+- alimentar el dashboard de Power BI
+- disponer de tablas resumen limpias para comparativas
+
+---
+
+## Trabajo realizado en Power BI
 
 Tras la fase de análisis en Python, se construyó un dashboard en Power BI orientado a la exploración visual y a la comparación de resultados.
 
-Modelado de datos
+### Modelado de datos
 
 Se trabajó con una tabla principal y varias dimensiones:
 
-Tabla principal
-dataset_final_aire_meteo_zaragoza_limpio
-Tablas dimensión
-DimContaminante
-DimEstacion
-DimFecha
+**Tabla principal**
+
+- `dataset_final_aire_meteo_zaragoza_limpio`
+
+**Tablas dimensión**
+
+- `DimContaminante`
+- `DimEstacion`
+- `DimFecha`
 
 Se crearon relaciones entre dimensiones y tabla de hechos para facilitar el filtrado y la navegación del modelo.
 
-Medidas DAX
+### Medidas DAX
 
 Se desarrollaron medidas para:
 
-concentración media
-concentración máxima
-registros analizados
-número de estaciones
-número de contaminantes
-medidas específicas para CO
-textos dinámicos para tarjetas
-medidas comparativas para contaminantes en µg/m3
+- concentración media
+- concentración máxima
+- registros analizados
+- número de estaciones
+- número de contaminantes
+- medidas específicas para CO
+- textos dinámicos para tarjetas
+- medidas comparativas para contaminantes en µg/m3
 
 También se organizó el modelo con carpetas de medidas para mantener una estructura clara:
 
-Auxiliares
-Concentración
-CO
-Comparativa
-Estación
-Registros
-Diseño del dashboard
+- Auxiliares
+- Concentración
+- CO
+- Comparativa
+- Estación
+- Registros
+
+### Diseño del dashboard
 
 Se diseñó una plantilla visual homogénea para todas las páginas:
 
-cabecera superior con degradado gris-rojo
-panel lateral de filtros
-fondo gris claro
-visualizaciones limpias y consistentes
-uso de una paleta basada en rojo para mantener coherencia visual
+- cabecera superior con degradado gris-rojo
+- panel lateral de filtros
+- fondo gris claro
+- visualizaciones limpias y consistentes
+- uso de una paleta basada en rojo para mantener coherencia visual
 
 Además, se tuvo en cuenta la legibilidad y la claridad de lectura durante el diseño.
 
-Hojas del dashboard
-1. Resumen
+### Hojas del dashboard
+
+#### 1. Resumen
 
 Esta página funciona como portada del análisis.
 
-Incluye:
+**Incluye:**
 
-filtros principales
-tarjetas resumen
-evolución mensual del contaminante seleccionado
-comparativa de concentración media por estación
-2. Comparativa por contaminante
+- filtros principales
+- tarjetas resumen
+- evolución mensual del contaminante seleccionado
+- comparativa de concentración media por estación
+
+#### 2. Comparativa por contaminante
 
 Esta página está orientada a comparar contaminantes entre sí.
 
-Incluye:
+**Incluye:**
 
-contaminantes analizados
-mayor media y mayor máxima en µg/m3
-comparación de concentración media por contaminante
-bloque específico para CO
-tabla resumen por contaminante
+- contaminantes analizados
+- mayor media y mayor máxima en µg/m3
+- comparación de concentración media por contaminante
+- bloque específico para CO
+- tabla resumen por contaminante
 
 Se separó CO del resto para evitar comparaciones engañosas, ya que utiliza una unidad distinta.
 
-3. Análisis por estación
+#### 3. Análisis por estación
 
 Esta página permite comparar el comportamiento de las diferentes estaciones.
 
-Incluye:
+**Incluye:**
 
-filtros de contaminante, año y estación del año
-evolución mensual por estación
-tabla resumen por estación
-tarjetas con métricas generales del contexto filtrado
-Principales hallazgos
+- filtros de contaminante, año y estación del año
+- evolución mensual por estación
+- tabla resumen por estación
+- tarjetas con métricas generales del contexto filtrado
+
+---
+
+## Principales hallazgos
 
 A lo largo del proyecto se observaron varios aspectos relevantes:
 
-Existen diferencias claras entre contaminantes en términos de concentración media y concentración máxima.
-CO requiere tratamiento separado debido a su unidad de medida diferente.
-Algunas estaciones presentan concentraciones medias superiores a otras de forma consistente.
-La evolución temporal mensual permite detectar patrones y cambios más claros que la visualización diaria.
-La comparación por estación ayuda a identificar comportamientos diferenciados según ubicación.
-La integración con datos meteorológicos aporta contexto adicional para interpretar mejor la evolución de la contaminación.
-Principales dificultades encontradas
+- Existen diferencias claras entre contaminantes en términos de concentración media y concentración máxima.
+- CO requiere tratamiento separado debido a su unidad de medida diferente.
+- Algunas estaciones presentan concentraciones medias superiores a otras de forma consistente.
+- La evolución temporal mensual permite detectar patrones y cambios más claros que la visualización diaria.
+- La comparación por estación ayuda a identificar comportamientos diferenciados según ubicación.
+- La integración con datos meteorológicos aporta contexto adicional para interpretar mejor la evolución de la contaminación.
+
+---
+
+## Principales dificultades encontradas
 
 Durante el desarrollo del proyecto aparecieron varios retos técnicos:
 
-lectura e integración de múltiples ficheros anuales
-transformación de datos horarios desde formato ancho a formato largo
-tratamiento correcto de fechas y horas
-diferencias de unidad entre contaminantes
-descarga de datos meteorológicos desde AEMET
-limitaciones de rango temporal en la API de AEMET
-conflicto entre formatos numéricos al importar tablas resumen en Power BI
-organización de medidas DAX y limpieza del modelo
+- lectura e integración de múltiples ficheros anuales
+- transformación de datos horarios desde formato ancho a formato largo
+- tratamiento correcto de fechas y horas
+- diferencias de unidad entre contaminantes
+- descarga de datos meteorológicos desde AEMET
+- limitaciones de rango temporal en la API de AEMET
+- conflicto entre formatos numéricos al importar tablas resumen en Power BI
+- organización de medidas DAX y limpieza del modelo
 
 Cada uno de estos problemas se fue resolviendo progresivamente hasta obtener un flujo estable de trabajo.
 
-Cómo ejecutar o revisar el proyecto
-Python
-1ºClonar el repositorio.
-2ºInstalar dependencias:
-```text
+---
+
+## Cómo ejecutar o revisar el proyecto
+
+### Python
+
+1. Clonar el repositorio.
+2. Instalar dependencias:
+
+```bash
 pip install -r requirements.txt
 ```
-3ºEjecutar los notebooks en orden:
-01_extraccion_y_carga.ipynb
-02_limpieza_y_transformacion.ipynb
-03_eda_y_estadistica.ipynb
-04_conclusiones_y_exportacion.ipynb
 
+3. Ejecutar los notebooks en este orden:
+   - `01_extraccion_y_carga.ipynb`
+   - `02_limpieza_y_transformacion.ipynb`
+   - `03_eda_y_estadistica.ipynb`
+   - `04_conclusiones_y_exportacion.ipynb`
 
-Power BI
-1ºAbrir el archivo:
+### Power BI
+
+1. Abrir el archivo:
+
 ```text
 dashboard/dashboard_calidad_aire_zaragoza.pbix
 ```
-Revisar las tres páginas del dashboard:
-Resumen
-Comparativa por contaminante
-Análisis por estación
 
+2. Revisar las tres páginas del dashboard:
+   - Resumen
+   - Comparativa por contaminante
+   - Análisis por estación
 
-Conclusión
+---
+
+## Conclusión
 
 Este proyecto ha permitido construir un flujo completo de análisis de datos, desde la extracción y preparación en Python hasta la visualización final en Power BI.
 
 Además del análisis exploratorio, el proyecto ha servido para trabajar tareas habituales de un entorno real de análisis:
 
-limpieza y transformación de datos
-integración de fuentes heterogéneas
-modelado para visualización
-diseño de dashboards
-interpretación de resultados
+- limpieza y transformación de datos
+- integración de fuentes heterogéneas
+- modelado para visualización
+- diseño de dashboards
+- interpretación de resultados
 
 El resultado final es un proyecto completo y estructurado que combina análisis técnico y presentación visual clara.
 
-Autor
+---
 
-Kevin Jesús Santoveña Viera
+## Autor
 
-GitHub: KvieraS
+**Kevin Jesús Santoveña Viera**
+
+GitHub: **KvieraS**
+
